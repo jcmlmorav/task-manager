@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
-from users.forms import EditProfileForm
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from users.forms import EditProfileForm, RegisterUserForm
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('users.profile')
     else:
-        form = UserCreationForm()
+        form = RegisterUserForm()
 
     args = {
         'form': form
