@@ -4,6 +4,9 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect( 'users.profile' )
+
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
         if form.is_valid():
@@ -17,17 +20,17 @@ def register(request):
     }
     return render(request, 'accounts/register.html', args)
 
-def login(request):
-    pass
-
 def profile(request):
-    if not request.user.username:
+    if request.user.is_anonymous:
         return redirect( 'users.login' )
 
     args = { 'user': request.user }
     return render(request, 'accounts/profile.html', args)
 
 def edit_profile(request):
+    if request.user.is_anonymous:
+        return redirect( 'users.login' )
+
     if( request.method == 'POST'):
         form = EditProfileForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -42,6 +45,9 @@ def edit_profile(request):
     return render(request, 'accounts/edit_profile.html', args)
 
 def change_password(request):
+    if request.user.is_anonymous:
+        return redirect( 'users.login' )
+    
     if( request.method == 'POST'):
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():

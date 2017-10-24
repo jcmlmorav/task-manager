@@ -12,6 +12,6 @@
             {{ form.as_p }}
             <input class="btn btn-primary btn-lg" type="submit" value="Log in">
         </form>
-        <a href="{% url 'users.password_reset' %}">Forgot your password?</a>
+        <a class="d-flex mt-3" href="{% url 'users.password_reset' %}">Forgot your password?</a>
     </div>
 {% endblock %}
