@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% if not projects %}
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">No projects yet?</h4>
+                        <p class="card-text">Start creating a new project.</p>
+                        <a href="{% url 'tasks.projects_new' %}" class="btn btn-primary">Create new project</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            {% for project in projects %}
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ project.name }}</h4>
+                            <p class="card-text">{{ project.description }}</p>
+                            <a href="{% url 'tasks.projects_view' project.slug %}" class="btn btn-primary">See more</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -121,7 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/manage'
+LOGIN_REDIRECT_URL = '/home'
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
