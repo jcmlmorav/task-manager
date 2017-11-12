@@ -1,11 +1,30 @@
 {% extends 'main.html' %}
 
-{% block title %} {{ get }} {% endblock %}
+{% block title %} {{ project.name }} {% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-sm-12">
-            {{ get }}
+            <h1>{{ project.name }}</h1>
+            <p>{{ project.description }}</p>
+            <hr>
+            <h2>Stages</h2>
+            {% if not stages %}
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">No stages yet?</h3>
+                            <p class="card-text">Create a stage to start with your tasks</p>
+                            <a href="{% url 'tasks.stages_new' project_slug=project.slug %}" class="btn btn-primary">Create new</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{% url 'tasks.stages_new' project_slug=project.slug %}" class="btn btn-primary bg-light text-primary">New stage</a>
+                {% for stage in stages %}
+                    <a href="{% url 'tasks.stages_new' project_slug=project.slug %}" class="btn btn-primary">{{ stage.name }}</a>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 {% endblock %}

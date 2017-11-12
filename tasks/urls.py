@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^home/$', views.home, name='tasks.home'),
     url(r'^projects/$', views.projects, name='tasks.projects'),
     url(r'^projects/new/$', views.projects_new, name='tasks.projects_new'),
-    url(r'^projects/(?P<slug>[\w-]+)/$', views.projects_view, name='tasks.projects_view')
+    url(r'^projects/(?P<slug>[\w-]+)/$', views.projects_view, name='tasks.projects_view'),
+    url(r'^stages/new/(?P<project_slug>[\w-]+)/$', views.stages_new, name='tasks.stages_new')
 ]

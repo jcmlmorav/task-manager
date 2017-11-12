@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Project
+from .models import Project, Stage
 
 class ProjectForm(ModelForm):
     class Meta:
@@ -7,4 +7,11 @@ class ProjectForm(ModelForm):
         fields = [
             'name',
             'description'
+        ]
+
+class StageForm(ModelForm):
+    class Meta:
+        model = Stage
+        fields = [
+            'name'
         ]

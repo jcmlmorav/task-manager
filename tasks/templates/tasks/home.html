@@ -18,8 +18,8 @@
             {% for project in projects %}
                 <div class="col-sm-4">
                     <div class="card">
+                        <h4 class="card-header">{{ project.name }}</h4>
                         <div class="card-body">
-                            <h4 class="card-title">{{ project.name }}</h4>
                             <p class="card-text">{{ project.description }}</p>
                             <a href="{% url 'tasks.projects_view' project.slug %}" class="btn btn-primary">See more</a>
                         </div>

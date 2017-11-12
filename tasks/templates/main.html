@@ -4,7 +4,20 @@
     <div class="container-fluid pt-5 pb-5">
         <div class="row">
             <div class="col-lg-2">
-
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'tasks.projects' %}">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Disabled</a>
+                    </li>
+                </ul>
             </div>
             <div class="col-lg-10">
                 {% block content %}{% endblock %}

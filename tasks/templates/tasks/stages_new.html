@@ -1,15 +1,15 @@
 {% extends 'main.html' %}
 
-{% block title %} Create project {% endblock %}
+{% block title %} Create stage {% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-sm-12">
-            <h1>Create project</h1>
+            <h1>Create stage</h1>
             <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input class="btn btn-lg btn-primary" type="submit" value="Save project">
+                <input class="btn btn-lg btn-primary" type="submit" value="Save stage">
             </form>
         </div>
     </div>
